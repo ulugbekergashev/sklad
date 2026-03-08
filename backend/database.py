@@ -6,7 +6,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./sklad.db")
+# Determine DB Path based on environment
+if os.environ.get("VERCEL"):
+    db_path = "/tmp/sklad.db"
+else:
+    db_path = "./sklad.db"
+
+DATABASE_URL = os.getenv("DATABASE_URL", f"sqlite:///{db_path}")
 
 # Use check_same_thread only for SQLite
 connect_args = {}
