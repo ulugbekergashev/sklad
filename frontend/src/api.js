@@ -51,8 +51,8 @@ export async function api(path, options = {}) {
 
     if (!res.ok) {
         let err;
-        try { err = await res.json(); } catch (e) { err = { detail: 'Xatolik yuz berdi' }; }
-        throw new Error(err.detail || 'Xatolik yuz berdi');
+        try { err = await res.json(); } catch (e) { err = { message: 'Xatolik yuz berdi' }; }
+        throw new Error(err.message || err.detail || 'Xatolik yuz berdi');
     }
 
     if (res.headers.get('content-type')?.includes('application/json')) {
