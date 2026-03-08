@@ -9,3 +9,4 @@ pydantic[email-validation]==2.9.0
 openpyxl==3.1.5
 python-dotenv==1.0.1
 openai==1.14.2
+# forcing utf-8 without bom
